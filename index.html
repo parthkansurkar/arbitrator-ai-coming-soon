@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arbitrator AI - An AI-powered legal dispute analysis platform. Coming soon.">
+  <title>Arbitrator AI | Coming Soon</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07111f;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(73, 128, 255, 0.18), transparent 32%),
+        radial-gradient(circle at 80% 80%, rgba(0, 200, 170, 0.14), transparent 30%);
+      pointer-events: none;
+    }
+
+    .background {
+      animation: backgroundPulse 10s ease-in-out infinite alternate;
+    }
+
+    .grid {
+      position: absolute;
+      inset: -50%;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 55px 55px;
+      transform: perspective(500px) rotateX(60deg) translateY(15%);
+      mask-image: linear-gradient(to bottom, transparent, black 35%, transparent 90%);
+      animation: gridMove 18s linear infinite;
+    }
+
+    .orb {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.22;
+      animation: floatOrb 9s ease-in-out infinite alternate;
+    }
+
+    .orb-one {
+      left: 8%;
+      top: 12%;
+      background: #315efb;
+    }
+
+    .orb-two {
+      right: 8%;
+      bottom: 10%;
+      background: #13c8a3;
+      animation-delay: -3s;
+    }
+
+    .orb-three {
+      left: 45%;
+      bottom: -15%;
+      background: #7b61ff;
+      animation-delay: -6s;
+    }
+
+    .container {
+      animation: pageEnter 1s ease-out both;
+    }
+
+      width: min(900px, 92%);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      animation: logoFloat 4s ease-in-out infinite, logoGlow 2.5s ease-in-out infinite alternate;
+    }
+
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 28px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #315efb, #13c8a3);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand {
+      font-size: clamp(38px, 7vw, 72px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .brand span {
+      background: linear-gradient(90deg, #6f91ff, #4fe0c1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badge {
+      animation: badgePulse 2.5s ease-in-out infinite;
+    }
+
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      margin-bottom: 18px;
+    }
+
+    .description {
+      animation: fadeUp 1s 0.45s ease-out both;
+    }
+
+      max-width: 680px;
+      margin: 0 auto;
+      color: #b8c3d5;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .card {
+      animation: fadeUp 1s 0.65s ease-out both;
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(121, 160, 255, 0.28);
+      background: rgba(255,255,255,0.075);
+    }
+
+      max-width: 680px;
+      margin: 38px auto 0;
+      padding: 26px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(12px);
+    }
+
+    .card-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #7fdaaF;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #d3dae6;
+      line-height: 1.6;
+    }
+
+    .contact {
+      margin-top: 24px;
+      color: #aeb9cb;
+      font-size: 14px;
+    }
+
+    .contact a {
+      color: #79a0ff;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      animation: fadeUp 1s 0.85s ease-out both;
+    }
+
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    @keyframes logoGlow {
+      from { box-shadow: 0 18px 55px rgba(0,0,0,0.35); }
+      to { box-shadow: 0 18px 65px rgba(49,94,251,0.35); }
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.035); opacity: 1; }
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(35px,-25px,0) scale(1.08); }
+      100% { transform: translate3d(-20px,25px,0) scale(0.96); }
+    }
+
+    @keyframes gridMove {
+      from { transform: perspective(500px) rotateX(60deg) translateY(15%); }
+      to { transform: perspective(500px) rotateX(60deg) translateY(25%); }
+    }
+
+      margin-top: 42px;
+      color: #6f7b8e;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .description {
+      animation: fadeUp 1s 0.45s ease-out both;
+    }
+
+        font-size: 16px;
+      }
+
+      .card {
+      animation: fadeUp 1s 0.65s ease-out both;
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(121, 160, 255, 0.28);
+      background: rgba(255,255,255,0.075);
+    }
+
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <span class="orb orb-one"></span>
+    <span class="orb orb-two"></span>
+    <span class="orb orb-three"></span>
+    <div class="grid"></div>
+  </div>
+
+  <main class="container">
+    <div class="logo">AI</div>
+
+    <div class="badge">Coming Soon</div>
+
+    <div class="brand">Arbitrator <span>AI</span></div>
+
+    <h1>We're Coming Soon</h1>
+
+    <p class="description">
+      A new AI-powered platform designed to help analyze legal disputes,
+      understand case documents, and provide intelligent insights.
+    </p>
+
+    <section class="card">
+      <div class="card-title">Under Development</div>
+      <p>
+        We're working hard to bring Arbitrator AI to you.
+        Our platform is currently under development and will be launching soon.
+      </p>
+
+      <div class="contact">
+        Project Owner: <strong>Parth Kansurkar</strong><br>
+        Contact:
+        <a href="mailto:admin@arbitratorai.in">admin@arbitratorai.in</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Arbitrator AI. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
